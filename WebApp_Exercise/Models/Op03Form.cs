@@ -27,7 +27,7 @@ public class Op03Form
         new SelectListItem{ Text= "引き算", Value= "2" },
         new SelectListItem{ Text= "掛け算", Value= "3" },
         new SelectListItem{ Text= "割り算", Value= "4" },
-        new SelectListItem{ Text= "あまり？", Value= "5" },
+        new SelectListItem{ Text= "あまり？", Value= "5" }
     };
 
     public int Answer { get; set; } = 0;
