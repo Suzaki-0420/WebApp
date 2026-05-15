@@ -1,46 +1,15 @@
-@model SampleForm
+@model PRGForm
 @{
-    ViewData["Title"] = "HTML Formを生成するタグヘルパー";
-    // PrefecturesId と一致する SelectListItem を検索（Valueは文字列なので ToString()）
-    // 一致する項目があれば、その表示テキスト（都道府県名）を取得
-    var selectedPref = Model.PrefecturesList
-    .FirstOrDefault(p => p.Value == Model.PrefecturesId.ToString())
-    ?.Text
-    ?? "未選択";
+    ViewData["Title"] = "結果";
 }
-<h2>@ViewData["Title"]</h2>
-@* 入力された値を出力 *@
-<div class="d-flex justify-content-center mt-5">
-    <table class="table table-bordered w-auto">
-        <thead class="table-light">
-            <tr>
-                <th>項目</th>
-                <th>入力値</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>@Html.DisplayNameFor(m => m.Name)</td>
-                <td>@Model.Name</td>
-            </tr>
-            <tr>
-                <td>@Html.DisplayNameFor(m => m.Age)</td>
-                <td>@Model.Age</td>
-            </tr>
-            <tr>
-                <td>@Html.DisplayNameFor(m => m.PrefecturesId)</td>
-                <td>@selectedPref</td>
-            </tr>
-        </tbody>
-    </table>
-</div>
-@* [戻る]ボタン *@
-<div class="d-flex justify-content-center">
-    <form asp-controller="FormSample" asp-action="Back" method="post">
-        <input type="hidden" asp-for="Name" />
-        <input type="hidden" asp-for="Age" />
-        <input type="hidden" asp-for="PrefecturesId" />
 
-        <button type="submit">戻る</button>
-    </form>
-</div>
+<h2>@ViewData["Title"]</h2>
+
+<p>
+    入力された文字列： <strong>@Model.Text</strong><br />
+    文字数： <strong>@Model.Length</strong> 文字
+</p>
+
+<form asp-action="Back" asp-controller="PRG" method="get">
+    <button type="submit" class="btn btn-primary">戻る</button>
+</form>
