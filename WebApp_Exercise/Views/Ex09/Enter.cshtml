@@ -1,0 +1,28 @@
+@model Exercise07Form
+@{
+    ViewData["Title"] = "演習-09 HTML Formを生成するタグヘルパーを利用する";
+}
+<h2>@ViewData["Title"]</h2>
+@*
+   使用するコントローラ:TagHelperFormController
+   実行するアクションメソッド:Confirm()メソッド
+*@
+<form asp-controller="Ex09" asp-action="Result" method="post">
+    @Html.AntiForgeryToken() @* CSRFトークンの生成 *@
+    <div class="mb-3">
+        <label asp-for="value1" class="form-label"></label>
+        <input asp-for="value1" class="form-control" />
+        <span asp-validation-for="value1" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="value2" class="form-label"></label>
+        <input asp-for="value2" class="form-control" />
+        <span asp-validation-for="value2" class="text-danger"></span>
+    </div>
+
+    @* [送信]ボタン *@
+    <div class="text-center">
+        <button type="submit" class="btn btn-primary">計算</button>
+    </div>
+</form>

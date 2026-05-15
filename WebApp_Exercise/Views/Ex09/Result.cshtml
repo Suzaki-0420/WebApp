@@ -1,0 +1,20 @@
+@model Exercise07Form
+@{
+    ViewData["Title"] = "演習-09 HTML Formを生成するタグヘルパーを利用する"; //タイトル
+}
+<h2>@ViewData["Title"]</h2>
+@* 入力された値を出力 *@
+<div class="d-flex justify-content-center mt-5">
+    <h3>
+        @{
+            var result = $"{Model.value1} + {Model.value2} = {Model.Answer}";
+        }
+        @result
+    </h3>
+</div>
+@* [戻る]ボタン *@
+<div class="d-flex justify-content-center">
+    <form method="get">
+        <button type="button" onclick="location.href='/Exercise09/Back'">戻る</button>
+    </form>
+</div>
