@@ -11,7 +11,7 @@ public class ItemCategory
     public ItemCategory(int? id, string? name)
     {
         ValidateId(id); //idが条件に合っているかチェック
-        ValidateName(Name); //nameが条件にあっているかチェック
+        ValidateName(name); //nameが条件にあっているかチェック
         Id = id;
         Name = name;
     }

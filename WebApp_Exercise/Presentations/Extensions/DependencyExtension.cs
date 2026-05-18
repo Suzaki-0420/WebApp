@@ -52,6 +52,7 @@ public static class DependencyExtension
     /// <param name="services">DIコンテナ</param>
     private static void SettingInfrastructures(IServiceCollection services)
     {
+        services.AddScoped<IItemRegisterService, ItemRegisterService>();
         // ドメインモデル:商品カテゴリと商品カテゴリエンティティの相互変換インターフェイスの実装
         services.AddScoped<ItemCategoryEntityAdapter>();
         // ドメインモデル:商品と商品エンティティの相互変換インターフェイスの実装
