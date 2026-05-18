@@ -7,7 +7,7 @@
    使用するコントローラ:TagHelperFormController
    実行するアクションメソッド:Confirm()メソッド
 *@
-<form asp-controller="Ex09" asp-action="Result" method="post">
+<form asp-controller="Ex09" asp-action="Calc" method="post">
     @Html.AntiForgeryToken() @* CSRFトークンの生成 *@
     <div class="mb-3">
         <label asp-for="value1" class="form-label"></label>

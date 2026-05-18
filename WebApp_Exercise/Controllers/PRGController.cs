@@ -17,33 +17,43 @@ public class PRGController : Controller
         return View(form);
     }
 
+    [HttpPost("Submit")]
+    public IActionResult Submit(PRGForm form)
+    {
+        using var loggerFactory = LoggerFactory.Create(builder =>
+        {
+            builder.AddConsole();
+        });
+        ILogger logger = loggerFactory.CreateLogger("PRGController");
+        logger.LogInformation("[送信]ボタンクリック!!!");
+
+        //バリデーションチェック＝不正なものが入っていたらエラーを返す
+        if (!ModelState.IsValid)
+        {
+            return View("Enter", form); //エラーだったら入力画面に戻る
+        }
+        //以下正常系
+        TempData["PRGForm"] = JsonSerializer.Serialize(form);
+        return RedirectToAction("Result");
+    }
+
     /// <summary>
     /// [送信]ボタンクリック
     /// </summary>
     /// <param name="form">PRGForm</param>
     /// <returns></returns>
-    [HttpPost("Result")]
-    public IActionResult Result(PRGForm form)
+    [HttpGet("Result")]
+    public IActionResult Result()
     {
-        // LoggerFactory を使って Logger を作成
-        using var loggerFactory = LoggerFactory.Create(builder =>
+        var json = (string)TempData["PRGForm"]!;
+        if (string.IsNullOrEmpty(json))
         {
-            builder.AddConsole(); // コンソール出力
-        });
-        ILogger logger = loggerFactory.CreateLogger("PRGController");
-        // ログメッセージを表示する
-        logger.LogInformation("[送信]ボタンクリック!!!");
-
-        //　バリデーションチェック
-        if (!ModelState.IsValid)
-        {
-            // バリデーションエラーの場合、入力画面を表示する
-            return View("Enter", form);
+            return RedirectToAction("Enter"); //何も入ってなかったら入力画面にリダイレクト
         }
+
+        var form = JsonSerializer.Deserialize<PRGForm>(json!);
         form!.Length = form.Text?.Length ?? 0;
         return View(form);
-        //TempData["PRGForm"] = JsonSerializer.Serialize(form);
-        //return RedirectToAction("Result");
     }
 
     /// <summary>
