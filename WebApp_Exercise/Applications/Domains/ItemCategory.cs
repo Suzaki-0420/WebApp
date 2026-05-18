@@ -1,4 +1,4 @@
-using WebApp_Exercise.Exeptions;
+using WebApp_Exercise.Exceptions;
 namespace WebApp_Exercise.Applications.Domains;
 
 public class ItemCategory

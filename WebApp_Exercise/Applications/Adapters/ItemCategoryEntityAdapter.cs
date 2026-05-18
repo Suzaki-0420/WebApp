@@ -1,6 +1,6 @@
 using WebApp_Exercise.Applications.Adapters;
 using WebApp_Exercise.Applications.Domains;
-using WebApp_Exercise.Exeptions;
+using WebApp_Exercise.Exceptions;
 using WebApp_Exercise.Infrastructures.Entities;
 namespace WebApp_Exercise_Answer.Infrastructures.Adapters;
 

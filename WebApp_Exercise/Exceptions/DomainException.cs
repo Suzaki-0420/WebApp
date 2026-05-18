@@ -1,4 +1,4 @@
-namespace WebApp_Exercise.Exeptions;
+namespace WebApp_Exercise.Exceptions;
 
 public class DomainException : Exception
 {
