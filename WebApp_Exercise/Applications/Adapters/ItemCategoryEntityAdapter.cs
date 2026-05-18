@@ -13,7 +13,8 @@ IConverter<ItemCategory, ItemCategoryEntity>, IRestorer<ItemCategory, ItemCatego
         if (domain == null) throw new InternalException("引数domainがnullのため変換できません。");
         return new ItemCategoryEntity
         {
-            Id = domain.Id ?? 0,      // null許容（新規は0）
+            //Id = domain.Id ?? 0
+            Id = domain.Id,      // null許容（新規は0）
             Name = domain.Name
         };
     }

@@ -24,7 +24,8 @@ IConverter<ItemStock, ItemStockEntity>, IRestorer<ItemStock, ItemStockEntity>
         }
         return new ItemStockEntity
         {
-            Id = domain.Id ?? 0,
+            //Id = domain.Id ?? 0
+            Id = domain.Id, //商品IdはDB側が自動で降る番号なのでnullを渡す
             Stock = domain.Stock,
             // ItemIdはDomain側に保持していないので、Repository側で必ずセットする
             // ここでは既定値のまま0する

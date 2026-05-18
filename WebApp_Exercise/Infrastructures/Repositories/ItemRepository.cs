@@ -100,7 +100,7 @@ public class ItemRepository : IItemRepository
             if (item.ItemStock != null)
             {
                 var stockEntity = _stockAdapter.Convert(item.ItemStock);
-                stockEntity.ItemId = itemEntity.Id; // 採番された商品Idを設定
+                stockEntity.ItemId = (int)itemEntity.Id!; // 採番された商品Idを設定
                 _appDbContext.ItemStocks.Add(stockEntity);
                 _appDbContext.SaveChanges();
             }
