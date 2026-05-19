@@ -39,10 +39,14 @@ IConverter<Employee, EmployeeEntity>, IRestorer<Employee, EmployeeEntity>
     /// <returns>ドメインオブジェクト:Employee</returns>
     public Employee Restore(EmployeeEntity target)
     {
+        Department? department = new Department(target.Department.DeptId, target.Department.DeptName);//Domeinの形のDepartmentを作る
+
+        //EmployeeとDepartmentがつながっていない
+
         var employee = new Employee(
             target.EmpId,
             target.EmpName,
-            null
+            department
         );
         return employee;
     }

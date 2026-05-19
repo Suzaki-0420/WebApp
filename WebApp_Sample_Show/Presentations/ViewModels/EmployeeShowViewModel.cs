@@ -16,10 +16,14 @@ public class EmployeeShowViewModel
     /// </summary>
     [Display(Name = "氏名")]
     public string? Name { get; set; } = string.Empty;
+    [Display(Name = "部署")]
+    public string? DeptName { get; set; } = string.Empty;
 
-    public EmployeeShowViewModel(int? id, string name)
+
+    public EmployeeShowViewModel(int? id, string? name, string? deptname)
     {
         Id = id;
         Name = name;
+        DeptName = deptname;
     }
 }

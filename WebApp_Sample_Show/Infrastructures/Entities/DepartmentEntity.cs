@@ -18,4 +18,6 @@ public class DepartmentEntity
     /// </summary> 
     [Column("name")]
     public string DeptName { get; set; } = string.Empty;
+
+    public List<EmployeeEntity>? Employees { get; set; }
 }

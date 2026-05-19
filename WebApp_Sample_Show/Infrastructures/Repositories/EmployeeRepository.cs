@@ -54,7 +54,7 @@ public class EmployeeRepository : IEmployeeRepository
         try
         {
             var entities = _context.Employees
-                //.Include(e => e.Department) いったん部署名を入れずにIDで出す
+                .Include(e => e.Department)
                 .ToList();
 
             var employees = new List<Employee>();
